@@ -1,18 +1,23 @@
 const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
+const connectDB = require('./config/db');
+app.use('/api/blogs', require('./routes/blogs'));
+app.use('/api/upload', require('./routes/uploads'));
+
+
+
 
 const app = express();
-const port = process.env.PORT || 5000;
 
-app.use(cors());
+// Conectar la base de datos
+connectDB();
+
 app.use(express.json());
 
-// Ruta de ejemplo
-app.get('/', (req, res) => {
-  res.send('Backend funcionando correctamente!');
-});
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
   console.log(`Servidor escuchando en el puerto ${port}`);
 });
+
+
+
