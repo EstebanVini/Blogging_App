@@ -1,11 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { getBlogs, createBlog } = require('../controllers/blogController');  // Asegúrate de que esta línea esté bien
+const { getBlogs, getBlogById, createBlog } = require('../controllers/blogController');
+const auth = require('../middlewares/auth');  // Importar el middleware de autenticación
 
-// Definir la ruta para obtener todos los blogs
+// Ruta para obtener todos los blogs (pública)
 router.get('/', getBlogs);
 
-// Definir la ruta para crear un nuevo blog
-router.post('/', createBlog);
+// Ruta para obtener un solo blog por ID (pública)
+router.get('/:id', getBlogById);
+
+// Ruta para crear un nuevo blog (protegida)
+router.post('/', auth, createBlog);
 
 module.exports = router;
