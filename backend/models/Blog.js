@@ -13,10 +13,11 @@ const BlogSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  imageUrl: {
-    type: String,
+  imageFileId: {  
+    type: mongoose.Schema.Types.ObjectId,  // Almacena el ObjectId de GridFS
     required: false
   }
 });
 
 module.exports = mongoose.model('Blog', BlogSchema);
+

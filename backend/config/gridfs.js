@@ -2,7 +2,7 @@ const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const crypto = require('crypto');
 const path = require('path');
-require('dotenv').config();
+require('dotenv').config();  // Asegúrate de tener configurado tu archivo .env
 
 // Configuración de Multer para almacenar imágenes en MongoDB usando GridFS
 const storage = new GridFsStorage({
@@ -16,7 +16,7 @@ const storage = new GridFsStorage({
         const filename = buf.toString('hex') + path.extname(file.originalname);
         const fileInfo = {
           filename: filename,
-          bucketName: 'uploads', // Colección en MongoDB
+          bucketName: 'uploads', // El nombre del bucket en GridFS
         };
         resolve(fileInfo);
       });
@@ -25,5 +25,4 @@ const storage = new GridFsStorage({
 });
 
 const upload = multer({ storage });
-
 module.exports = upload;
