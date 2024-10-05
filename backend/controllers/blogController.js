@@ -1,6 +1,6 @@
 const Blog = require('../models/Blog');
 
-// Obtener todos los blogs
+// Controlador para obtener todos los blogs
 const getBlogs = async (req, res) => {
   try {
     const blogs = await Blog.find();
@@ -11,7 +11,7 @@ const getBlogs = async (req, res) => {
   }
 };
 
-// Crear un nuevo blog
+// Controlador para crear un nuevo blog
 const createBlog = async (req, res) => {
   try {
     const newBlog = new Blog(req.body);
@@ -23,4 +23,5 @@ const createBlog = async (req, res) => {
   }
 };
 
+// Exportar los controladores
 module.exports = { getBlogs, createBlog };
