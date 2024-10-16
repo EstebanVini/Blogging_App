@@ -1,0 +1,39 @@
+.editor-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+  }
+  
+  .toolbox,
+  .settings-panel {
+    width: 20%;
+    padding: 10px;
+    background-color: #f0f0f0;
+    transition: width 0.3s ease;
+  }
+  
+  .toolbox.hidden,
+  .settings-panel.hidden {
+    width: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .canvas {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #fafafa;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    transition: flex-grow 0.3s ease;
+  }
+  
+  .canvas.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+  }
+  
